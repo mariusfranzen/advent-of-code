@@ -17,10 +17,8 @@ let totalCols = 0;
 GenerateData();
 
 // Part 1
-// Calculate visible trees
 RowVisibility();
 ColVisibility();
-
 ResultPartOne();
 
 // Part 2
@@ -141,7 +139,7 @@ function CalculateDirectionViewDistance(
 
     switch (direction) {
         case 'up':
-            if (rowInput == 0) {
+            if (rowInput === 0) {
                 break;
             }
             for (let row = rowInput - 1; row >= 0; row--) {
@@ -153,7 +151,7 @@ function CalculateDirectionViewDistance(
             break;
 
         case 'right':
-            if (colInput == totalCols) {
+            if (colInput === totalCols) {
                 break;
             }
             for (let col = colInput + 1; col < totalCols; col++) {
@@ -165,7 +163,7 @@ function CalculateDirectionViewDistance(
             break;
 
         case 'down':
-            if (rowInput == totalRows) {
+            if (rowInput === totalRows) {
                 break;
             }
             for (let row = rowInput + 1; row < totalRows; row++) {
@@ -177,7 +175,7 @@ function CalculateDirectionViewDistance(
             break;
 
         case 'left':
-            if (colInput == 0) {
+            if (colInput === 0) {
                 break;
             }
             for (let col = colInput - 1; col >= 0; col--) {
