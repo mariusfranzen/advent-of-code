@@ -46,15 +46,14 @@ int main()
 		}
 	}
 
+	file.close();
+
 	end = clock();
 
 	cout << "Highest calorie count: " << highestCalorieCount << endl;
 
 	double timeTaken = (double(end - start) / double(CLOCKS_PER_SEC)) * 1000;
-
 	cout << "Time taken: " << timeTaken << "ms" << endl;
-
-	file.close();
 }
 
 // Part 1 time: 8ms
