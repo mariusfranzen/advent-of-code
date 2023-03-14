@@ -18,10 +18,8 @@ GenerateData();
 
 // Part 1
 // Calculate visible trees
-LeftToRight();
-RightToLeft();
-TopToBottom();
-BottomToTop();
+RowVisibility();
+ColVisibility();
 
 ResultPartOne();
 
@@ -56,52 +54,40 @@ function GenerateData() {
     }
 }
 
-function LeftToRight() {
+function RowVisibility() {
     for (let row = 0; row < totalRows; row++) {
-        let maxHeight = trees[row][0];
+        let maxHeightLeftToRight = trees[row][0];
+        let maxHeightRightToLeft = trees[row][trees[row].length - 1];
 
         for (let col = 0; col < totalCols; col++) {
-            if (trees[row][col] > maxHeight) {
-                maxHeight = trees[row][col];
+            if (trees[row][col] > maxHeightLeftToRight) {
+                maxHeightLeftToRight = trees[row][col];
                 visibleTrees[row][col] = 1;
             }
         }
-    }
-}
-
-function RightToLeft() {
-    for (let row = 0; row < totalRows; row++) {
-        let maxHeight = trees[row][trees[row].length - 1];
-
         for (let col = totalCols - 1; col > 0; col--) {
-            if (trees[row][col] > maxHeight) {
-                maxHeight = trees[row][col];
+            if (trees[row][col] > maxHeightRightToLeft) {
+                maxHeightRightToLeft = trees[row][col];
                 visibleTrees[row][col] = 1;
             }
         }
     }
 }
 
-function TopToBottom() {
+function ColVisibility() {
     for (let col = 0; col < totalCols; col++) {
-        let maxHeight = trees[0][col];
+        let maxHeightTopToBottom = trees[0][col];
+        let maxHeightBottomToTop = trees[totalRows - 1][col];
 
         for (let row = 0; row < totalRows; row++) {
-            if (trees[row][col] > maxHeight) {
-                maxHeight = trees[row][col];
+            if (trees[row][col] > maxHeightTopToBottom) {
+                maxHeightTopToBottom = trees[row][col];
                 visibleTrees[row][col] = 1;
             }
         }
-    }
-}
-
-function BottomToTop() {
-    for (let col = 0; col < totalCols; col++) {
-        let maxHeight = trees[totalRows - 1][col];
-
         for (let row = totalRows - 1; row > 0; row--) {
-            if (trees[row][col] > maxHeight) {
-                maxHeight = trees[row][col];
+            if (trees[row][col] > maxHeightBottomToTop) {
+                maxHeightBottomToTop = trees[row][col];
                 visibleTrees[row][col] = 1;
             }
         }
@@ -112,7 +98,6 @@ function ResultPartOne() {
     let totalVisibleTrees = 0;
 
     for (let row = 0; row < totalRows; row++) {
-        //console.log(visibleTrees[row].join(''));
         for (let col = 0; col < totalCols; col++) {
             if (visibleTrees[row][col] > 0) {
                 totalVisibleTrees++;
@@ -223,18 +208,8 @@ function ResultPartTwo() {
             const score = CalculateScenicScore(row, col);
             if (score > highestScore) {
                 highestScore = score;
-                const up = viewDistanceUp[row][col];
-                const right = viewDistanceRight[row][col];
-                const down = viewDistanceDown[row][col];
-                const left = viewDistanceLeft[row][col];
-                console.log(`${row} x ${col}`);
-                console.log(up);
-                console.log(right);
-                console.log(down);
-                console.log(left);
-                console.log();
             }
         }
     }
-    console.log(highestScore);
+    console.log(`Highest score: ${highestScore}`);
 }
