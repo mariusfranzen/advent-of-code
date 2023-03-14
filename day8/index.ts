@@ -63,6 +63,7 @@ function RowVisibility() {
                 visibleTrees[row][col] = 1;
             }
         }
+
         for (let col = totalCols - 1; col > 0; col--) {
             if (trees[row][col] > maxHeightRightToLeft) {
                 maxHeightRightToLeft = trees[row][col];
@@ -83,6 +84,7 @@ function ColVisibility() {
                 visibleTrees[row][col] = 1;
             }
         }
+        
         for (let row = totalRows - 1; row > 0; row--) {
             if (trees[row][col] > maxHeightBottomToTop) {
                 maxHeightBottomToTop = trees[row][col];
