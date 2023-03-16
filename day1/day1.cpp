@@ -2,22 +2,12 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include "StringUtils.h"
 
 using namespace std;
+using namespace CppUtils;
 
 int elves = 0;
-
-bool isNumber(const string s) 
-{
-	std::string::const_iterator it = s.begin();
-
-	while (it != s.end() && std::isdigit(*it))
-	{
-		++it;
-	}
-
-	return !s.empty() && it == s.end();
-}
 
 int main()
 {
@@ -31,7 +21,7 @@ int main()
 	int currentCalorieCount = 0;
 	while (getline(file, input))
 	{
-		if (isNumber(input))
+		if (StringUtils::IsNumber(input))
 		{
 			currentCalorieCount += stoi(input);
 		}
