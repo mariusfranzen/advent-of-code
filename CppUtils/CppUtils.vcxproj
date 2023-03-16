@@ -131,9 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Sorting.h" />
     <ClInclude Include="StringUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="StringUtils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
