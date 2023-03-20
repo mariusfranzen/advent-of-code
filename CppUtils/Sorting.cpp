@@ -3,64 +3,62 @@
 
 namespace CppUtils
 {
-	void Sorting::QuickSort(int* arr, int start, int end)
+	void Sorting::QuickSort(int* arr, const int start, const int end)
 	{
 		if (start < end)
 		{
-			int partitionIndex = Partition(arr, start, end);
-			QuickSort(arr, start, partitionIndex - 1);
-			QuickSort(arr, partitionIndex + 1, end);
+			const int partition_index = Partition(arr, start, end);
+			QuickSort(arr, start, partition_index - 1);
+			QuickSort(arr, partition_index + 1, end);
 		}
-		return;
 	}
 
-    void Sorting::Reverse(int* arr, int len)
-    {
-        for (int ix = 0; ix < len / 2; ix++)
-        {
-            int t = arr[ix];
-            arr[ix] = arr[len - ix - 1];
-            arr[len - ix - 1] = t;
-        }
-    }
-
-	int Sorting::Partition(int* arr, int start, int end)
+	void Sorting::Reverse(int* arr, const int len)
 	{
-        int pivot = arr[start];
+		for (int ix = 0; ix < len / 2; ix++)
+		{
+			const int t = arr[ix];
+			arr[ix] = arr[len - ix - 1];
+			arr[len - ix - 1] = t;
+		}
+	}
 
-        int count = 0;
-        for (int i = start + 1; i <= end; i++)
-        {
-            if (arr[i] <= pivot)
-                count++;
-        }
+	int Sorting::Partition(int* arr, const int start, const int end)
+	{
+		const int pivot = arr[start];
 
-        // Giving pivot element its correct position
-        int pivotIndex = start + count;
-        std::swap(arr[pivotIndex], arr[start]);
+		int count = 0;
+		for (int i = start + 1; i <= end; i++)
+		{
+			if (arr[i] <= pivot)
+				count++;
+		}
 
-        // Sorting left and right parts of the pivot element
-        int i = start, j = end;
+		// Giving pivot element its correct position
+		const int pivot_index = start + count;
+		std::swap(arr[pivot_index], arr[start]);
 
-        while (i < pivotIndex && j > pivotIndex)
-        {
+		// Sorting left and right parts of the pivot element
+		int i = start, j = end;
 
-            while (arr[i] <= pivot)
-            {
-                i++;
-            }
+		while (i < pivot_index && j > pivot_index)
+		{
+			while (arr[i] <= pivot)
+			{
+				i++;
+			}
 
-            while (arr[j] > pivot)
-            {
-                j--;
-            }
+			while (arr[j] > pivot)
+			{
+				j--;
+			}
 
-            if (i < pivotIndex && j > pivotIndex)
-            {
-                std::swap(arr[i++], arr[j--]);
-            }
-        }
+			if (i < pivot_index && j > pivot_index)
+			{
+				std::swap(arr[i++], arr[j--]);
+			}
+		}
 
-        return pivotIndex;
+		return pivot_index;
 	}
 }

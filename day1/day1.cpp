@@ -13,46 +13,44 @@ int elves = 0;
 
 int main()
 {
-	clock_t start, end;
-	start = clock();
+	const clock_t start = clock();
 
 	ifstream file("./input.txt");
 
 	string input;
-	int currentCalories = 0;
+	int current_calories = 0;
 	vector<int> calories;
 	while (getline(file, input))
 	{
 		if (StringUtils::IsNumber(input))
 		{
-			currentCalories += stoi(input);
+			current_calories += stoi(input);
 		}
 		else
 		{
-			calories.push_back(currentCalories);
-			currentCalories = 0;
+			calories.push_back(current_calories);
+			current_calories = 0;
 		}
 	}
 
-	int size = calories.size();
-	int* caloriesArray;
-	caloriesArray = new int[size];
+	const int size = calories.size();
+	const auto calories_array = new int[size];
 
-	std::copy(calories.begin(), calories.end(), caloriesArray);
+	std::copy(calories.begin(), calories.end(), calories_array);
 
-	Sorting::QuickSort(caloriesArray, 0, size - 1);
-	Sorting::Reverse(caloriesArray, size);
-	
-	int highestCalorieCount = caloriesArray[0];
-	int top3Elves = caloriesArray[0] + caloriesArray[1] + caloriesArray[2];
+	Sorting::QuickSort(calories_array, 0, size - 1);
+	Sorting::Reverse(calories_array, size);
+
+	const int highest_calorie_count = calories_array[0];
+	const int top_3_elves = calories_array[0] + calories_array[1] + calories_array[2];
 
 	file.close();
 
-	end = clock();
+	const clock_t end = clock();
 
-	cout << "Highest calorie count: " << highestCalorieCount << endl;
-	cout << "The 3 elves with the most calories have a combined calorie count of: " << top3Elves << endl;
+	cout << "Highest calorie count: " << highest_calorie_count << endl;
+	cout << "The 3 elves with the most calories have a combined calorie count of: " << top_3_elves << endl;
 
-	double timeTaken = (double(end - start) / double(CLOCKS_PER_SEC)) * 1000;
-	cout << "Time taken: " << timeTaken << "ms" << endl;
+	const double time_taken = (static_cast<double>(end - start) / static_cast<double>(CLOCKS_PER_SEC)) * 1000;
+	cout << "Time taken: " << time_taken << "ms" << endl;
 }

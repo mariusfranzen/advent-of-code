@@ -2,9 +2,9 @@
 
 namespace CppUtils
 {
-	bool StringUtils::IsNumber(const string s)
+	bool StringUtils::IsNumber(const string& s)
 	{
-		std::string::const_iterator it = s.begin();
+		auto it = s.begin();
 
 		while (it != s.end() && std::isdigit(*it))
 		{

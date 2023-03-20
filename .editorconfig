@@ -1,0 +1,29 @@
+
+[*.{appxmanifest,axml,build,c,c++,cc,cginc,compute,config,cp,cpp,csproj,cu,cuh,cxx,dbml,discomap,dtd,fx,fxh,h,hh,hlsl,hlsli,hlslinc,hpp,hxx,inc,inl,ino,ipp,ixx,jsproj,lsproj,mpp,mq4,mq5,mqh,njsproj,nuspec,proj,props,resw,resx,StyleCop,targets,tasks,tpp,usf,ush,vbproj,xml,xsd}]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+[*.{asax,ascx,aspx,axaml,cs,cshtml,css,htm,html,js,jsx,master,paml,razor,skin,ts,tsx,vb,xaml,xamlx,xoml}]
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+[*.{json,resjson}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[*]
+
+# ReSharper properties
+resharper_cpp_max_line_length = 140
+resharper_csharp_insert_final_newline = true
+resharper_for_built_in_types = use_var_when_evident
+resharper_for_other_types = use_var_when_evident
+resharper_for_simple_types = use_var_when_evident
+resharper_js_quote_style = singlequoted
+
+# ReSharper inspection severities
+resharper_cpp_join_declaration_and_assignment_highlighting = hint
+resharper_suggest_var_or_type_built_in_types_highlighting = none
