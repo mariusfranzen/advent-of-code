@@ -2,7 +2,7 @@
 
 namespace CppUtils
 {
-	bool StringUtils::IsNumber(const string& s)
+	bool StringUtils::IsNumber(const std::string& s)
 	{
 		auto it = s.begin();
 
